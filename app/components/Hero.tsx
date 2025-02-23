@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { Linkedin, Mail, ArrowDown } from "lucide-react"
+import { GitlabIcon as GitHubIcon, Linkedin, Mail, ArrowDown } from "lucide-react"
 import { motion } from "framer-motion"
 
 const CodePattern = () => (
@@ -57,6 +57,15 @@ export default function Hero() {
             </p>
             <div className="flex justify-center lg:justify-start space-x-4 mb-8">
               <a
+                href="https://github.com/asksharmadeepak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
+                aria-label="GitHub Profile"
+              >
+                <GitHubIcon className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+              </a>
+              <a
                 href="https://www.linkedin.com/in/asksharmadeepak/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -65,16 +74,6 @@ export default function Hero() {
               >
                 <Linkedin className="w-6 h-6 text-gray-700 dark:text-gray-300" />
               </a>
-                <a
-                  href="https://github.com/asksharmadeepak"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
-                  aria-label="GitHub Profile"
-                >
-                  <GitHub className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-                </a>
-
               <a
                 href="mailto:deepak.sharma@live.in"
                 className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
@@ -129,4 +128,3 @@ export default function Hero() {
     </section>
   )
 }
-
