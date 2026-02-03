@@ -8,25 +8,25 @@ export default function Services() {
   const services = [
     {
       icon: <Layout className="w-12 h-12 text-blue-500" />,
-      title: "Technical Leadership",
+      title: "Engineering Management & Leadership",
       description:
-        "Leading development teams with agile methodologies, fostering collaboration and delivering high-quality solutions.",
+        "Leading cross-functional engineering teams across geographies (India, Europe, UK). Setting up engineering principles, technical roadmaps, and fostering a culture of excellence and innovation.",
     },
     {
       icon: <Server className="w-12 h-12 text-green-500" />,
-      title: "Backend Architecture",
+      title: "Microservices Architecture & APIs",
       description:
-        "Designing and implementing scalable backend systems using Java, Scala, and Kotlin with microservices architecture.",
+        "Designing and implementing scalable microservices using Java, Kotlin, Scala with Spring Boot, HTTP4k, and Play Framework. Building event-driven systems with Kafka and implementing circuit breaker patterns.",
     },
     {
       icon: <Code className="w-12 h-12 text-purple-500" />,
-      title: "Full Stack Development",
-      description: "Building end-to-end applications using Spring Boot, Angular, and modern web technologies.",
+      title: "Product Development & Delivery",
+      description: "Bridging technical and business teams for seamless product delivery. Working closely with Product and UX stakeholders to deliver customer-centric solutions with agile practices (TDD, BDD, pair programming).",
     },
     {
       icon: <Smartphone className="w-12 h-12 text-yellow-500" />,
-      title: "API Development",
-      description: "Creating robust and efficient RESTful APIs with comprehensive documentation and testing.",
+      title: "DevOps & Cloud Infrastructure",
+      description: "Setting up CI/CD pipelines (Jenkins, Concourse), monitoring (Prometheus), and cloud deployments on AWS and Google Cloud. Implementing containerization with Docker and orchestration with Kubernetes.",
     },
   ]
 
@@ -43,7 +43,7 @@ export default function Services() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          My Services
+          Areas of Expertise
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => (

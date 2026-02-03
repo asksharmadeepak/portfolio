@@ -6,14 +6,14 @@ import Image from "next/image"
 
 export default function About() {
   const skills = [
-    { icon: <Code className="w-8 h-8 text-blue-500" />, title: "Backend", description: "Java, Scala, Kotlin" },
+    { icon: <Code className="w-8 h-8 text-blue-500" />, title: "14+ Years", description: "Engineering Experience" },
     {
       icon: <Server className="w-8 h-8 text-green-500" />,
-      title: "Architecture",
-      description: "Microservices, REST APIs",
+      title: "Global Teams",
+      description: "India, Europe, UK",
     },
-    { icon: <Database className="w-8 h-8 text-purple-500" />, title: "Frontend", description: "Angular, HTML5, CSS3" },
-    { icon: <Zap className="w-8 h-8 text-yellow-500" />, title: "Leadership", description: "Team Management, Agile" },
+    { icon: <Database className="w-8 h-8 text-purple-500" />, title: "Product Focus", description: "Customer-Centric Solutions" },
+    { icon: <Zap className="w-8 h-8 text-yellow-500" />, title: "Engineering Manager", description: "Tech Lead & Mentor" },
   ]
 
   return (
@@ -31,7 +31,7 @@ export default function About() {
         >
           About Me
         </motion.h2>
-        <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="flex flex-col md:flex-row items-start justify-between gap-12">
           <motion.div
             className="md:w-1/2 mb-8 md:mb-0"
             initial={{ opacity: 0, x: -50 }}
@@ -39,29 +39,33 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-              As a Tech Lead with over 13 years of experience, I specialize in building robust and scalable applications
-              using Java, Scala, and Kotlin technologies. I have extensive experience in leading teams and delivering
-              high-quality software solutions through agile methodologies.
+            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+              Engineering Manager with 14+ years of strong foundation in full-stack development and deep technical 
+              expertise in API development, microservices, and web applications using Java, Kotlin, and Scala with 
+              frameworks like Spring Boot and Play Framework.
             </p>
-            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-              My expertise includes API development, microservices architecture, and full-stack development. I'm
-              passionate about clean code, test-driven development, and fostering a collaborative development
-              environment through practices like pair programming.
+            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+              Currently managing a cross-functional team of 8+ engineers and QA across geographies (India, Europe, UK), 
+              working closely with product and UX stakeholders to deliver customer-centric solutions.
+            </p>
+            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              Strong advocate of agile engineering practices, infusing test-driven development (TDD), pair programming, 
+              and continuous delivery to ensure scalable architecture and rapid iteration. I bring a blend of technical 
+              leadership, team mentorship, and hands-on experience to foster a culture of excellence and innovation.
             </p>
           </motion.div>
           <motion.div
-            className="md:w-1/2 grid grid-cols-2 gap-6"
+            className="w-full md:w-1/2 grid grid-cols-2 gap-4"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             {skills.map((skill, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+              <div key={index} className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
                 {skill.icon}
-                <h3 className="text-xl font-semibold mt-4 mb-2 dark:text-white">{skill.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">{skill.description}</p>
+                <h3 className="text-lg font-semibold mt-3 mb-1 dark:text-white">{skill.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">{skill.description}</p>
               </div>
             ))}
           </motion.div>

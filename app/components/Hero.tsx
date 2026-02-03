@@ -49,11 +49,12 @@ export default function Hero() {
               Deepak Sharma
             </h1>
             <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-700 dark:text-gray-300">
-              Tech Lead & Full Stack Developer
+              Engineering Manager | Technical Leadership
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
-              With over 13 years of experience in building scalable applications using Java, Scala, and Kotlin.
-              Specialized in API development, microservices architecture, and team leadership.
+              With 14+ years of experience leading high-performing engineering teams in product organizations. 
+              Specialized in API development, microservices architecture, and agile delivery with a focus on 
+              quality, velocity, and collaboration across global teams.
             </p>
             <div className="flex justify-center lg:justify-start space-x-4 mb-8">
               <a
@@ -66,7 +67,7 @@ export default function Hero() {
                 <GitHubIcon className="w-6 h-6 text-gray-700 dark:text-gray-300" />
               </a>
               <a
-                href="https://www.linkedin.com/in/asksharmadeepak/"
+                href="https://www.linkedin.com/in/iamsharmadeepak/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
@@ -102,10 +103,10 @@ export default function Hero() {
             <div className="relative w-72 h-72 md:w-96 md:h-96 mx-auto">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-600 dark:to-purple-600 rounded-3xl transform rotate-6 opacity-50"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 dark:from-purple-600 dark:to-blue-600 rounded-3xl transform -rotate-6 opacity-50"></div>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/placeholder.svg?height=400&width=400"
-                  alt="Deepak Sharma"
+                  src="/deepak-sharma.jpg"
+                  alt="Deepak Sharma - Tech Lead & Full Stack Developer"
                   fill
                   className="object-cover"
                   priority
