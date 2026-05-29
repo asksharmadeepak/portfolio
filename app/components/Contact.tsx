@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Mail, MapPin, Linkedin, MessageCircle, Send } from "lucide-react"
+import { Mail, MapPin, Linkedin, MessageCircle } from "lucide-react"
 import Image from "next/image"
 
 export default function Contact() {
@@ -64,8 +64,11 @@ export default function Contact() {
           >
             <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg w-full flex flex-col">
               <h3 className="text-2xl font-semibold mb-6 dark:text-white text-center">Let's Connect</h3>
-              <p className="text-gray-600 dark:text-gray-300 text-center mb-8">
-                I'm always open to discussing new opportunities, interesting projects, or potential collaborations.
+              <p className="text-gray-600 dark:text-gray-300 text-center mb-4">
+                I&apos;m always open to discussing new opportunities, interesting projects, or potential collaborations.
+              </p>
+              <p className="text-sm text-blue-600 dark:text-blue-400 text-center mb-8 px-2">
+                Building a product? Reach out for early access to upcoming apps and beta invites.
               </p>
               
               <div className="space-y-4">

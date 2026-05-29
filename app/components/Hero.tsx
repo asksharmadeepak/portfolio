@@ -51,10 +51,21 @@ export default function Hero() {
             <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-700 dark:text-gray-300">
               Engineering Manager | Technical Leadership
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-4 max-w-2xl mx-auto lg:mx-0">
               With 14+ years of experience leading high-performing engineering teams in product organizations. 
               Specialized in API development, microservices architecture, and agile delivery with a focus on 
               quality, velocity, and collaboration across global teams.
+            </p>
+            <p className="text-base text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+              I also design and ship production products — 6+ apps on Google Play and live web apps including{" "}
+              <a href="https://dual-canvas.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
+                Dual Canvas
+              </a>{" "}
+              and{" "}
+              <a href="https://loungeaccessfinder.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
+                Lounge Access Finder
+              </a>
+              .
             </p>
             <div className="flex justify-center lg:justify-start space-x-4 mb-8">
               <a

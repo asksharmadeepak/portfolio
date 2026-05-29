@@ -12,7 +12,7 @@ export default function About() {
       title: "Global Teams",
       description: "India, Europe, UK",
     },
-    { icon: <Database className="w-8 h-8 text-purple-500" />, title: "Product Focus", description: "Customer-Centric Solutions" },
+    { icon: <Database className="w-8 h-8 text-purple-500" />, title: "8+ Products", description: "Live on Play & Web" },
     { icon: <Zap className="w-8 h-8 text-yellow-500" />, title: "Engineering Manager", description: "Tech Lead & Mentor" },
   ]
 
@@ -50,8 +50,8 @@ export default function About() {
             </p>
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
               Strong advocate of agile engineering practices, infusing test-driven development (TDD), pair programming, 
-              and continuous delivery to ensure scalable architecture and rapid iteration. I bring a blend of technical 
-              leadership, team mentorship, and hands-on experience to foster a culture of excellence and innovation.
+              and continuous delivery to ensure scalable architecture and rapid iteration. Outside of my day job, I 
+              build and launch my own products — from idea and design through to production on Google Play and the web.
             </p>
           </motion.div>
           <motion.div
