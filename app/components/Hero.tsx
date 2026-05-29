@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { GitlabIcon as GitHubIcon, Linkedin, Mail, ArrowDown } from "lucide-react"
+import { GitlabIcon as GitHubIcon, Linkedin, Mail, ArrowDown, Sparkles, Rocket } from "lucide-react"
 import { motion } from "framer-motion"
 
 const CodePattern = () => (
@@ -56,17 +56,10 @@ export default function Hero() {
               Specialized in API development, microservices architecture, and agile delivery with a focus on 
               quality, velocity, and collaboration across global teams.
             </p>
-            <p className="text-base text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
-              I also design and ship production products — 6+ apps on Google Play and live web apps including{" "}
-              <a href="https://dual-canvas.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
-                Dual Canvas
-              </a>{" "}
-              and{" "}
-              <a href="https://loungeaccessfinder.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
-                Lounge Access Finder
-              </a>
-              .
-            </p>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full bg-white/70 dark:bg-gray-800/70 border border-purple-200 dark:border-purple-700 text-sm font-medium text-purple-700 dark:text-purple-300 shadow-sm mx-auto lg:mx-0">
+              <Rocket className="w-4 h-4" />
+              8+ products live on Google Play &amp; the web
+            </div>
             <div className="flex justify-center lg:justify-start space-x-4 mb-8">
               <a
                 href="https://github.com/asksharmadeepak"
@@ -94,15 +87,33 @@ export default function Hero() {
                 <Mail className="w-6 h-6 text-gray-700 dark:text-gray-300" />
               </a>
             </div>
-            <motion.button
-              onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-4">
+              <motion.button
+                onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Learn More
+                <ArrowDown className="w-4 h-4" />
+              </motion.button>
+              <motion.button
+                onClick={() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 text-purple-700 dark:text-purple-300 border-2 border-purple-500 dark:border-purple-400 rounded-full hover:bg-purple-50 dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Sparkles className="w-4 h-4" />
+                View My Products
+              </motion.button>
+            </div>
+            <button
+              type="button"
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              className="mt-4 text-sm text-blue-600 dark:text-blue-400 hover:underline font-medium mx-auto lg:mx-0 block"
             >
-              Learn More
-              <ArrowDown className="w-4 h-4" />
-            </motion.button>
+              Get early access to what&apos;s coming next →
+            </button>
           </motion.div>
 
           <motion.div
