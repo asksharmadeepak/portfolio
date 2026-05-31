@@ -1,7 +1,8 @@
 "use client"
 
 import Image from "next/image"
-import { GitlabIcon as GitHubIcon, Linkedin, Mail, ArrowDown, Sparkles, Rocket } from "lucide-react"
+import { Github, Linkedin, Mail, ArrowDown, Sparkles, Rocket, FileDown } from "lucide-react"
+import { AndroidIcon, GooglePlayIcon, WebPlatformIcon } from "./PlatformIcons"
 import { motion } from "framer-motion"
 
 const CodePattern = () => (
@@ -57,8 +58,13 @@ export default function Hero() {
               quality, velocity, and collaboration across global teams.
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full bg-white/70 dark:bg-gray-800/70 border border-purple-200 dark:border-purple-700 text-sm font-medium text-purple-700 dark:text-purple-300 shadow-sm mx-auto lg:mx-0">
-              <Rocket className="w-4 h-4" />
-              8+ products live on Google Play &amp; the web
+              <Rocket className="w-4 h-4 shrink-0" />
+              <span>8+ products live</span>
+              <span className="flex items-center gap-1 pl-1 border-l border-purple-200 dark:border-purple-600 ml-1">
+                <WebPlatformIcon size={14} className="text-blue-600 dark:text-blue-400" />
+                <GooglePlayIcon size={14} />
+                <AndroidIcon size={13} className="text-[#3DDC84]" />
+              </span>
             </div>
             <div className="flex justify-center lg:justify-start space-x-4 mb-8">
               <a
@@ -68,7 +74,7 @@ export default function Hero() {
                 className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
                 aria-label="GitHub Profile"
               >
-                <GitHubIcon className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                <Github className="w-6 h-6 text-gray-700 dark:text-gray-300" />
               </a>
               <a
                 href="https://www.linkedin.com/in/iamsharmadeepak/"
@@ -106,6 +112,16 @@ export default function Hero() {
                 <Sparkles className="w-4 h-4" />
                 View My Products
               </motion.button>
+              <motion.a
+                href="/Deepak_Sharma_Resume.pdf"
+                download
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FileDown className="w-4 h-4" />
+                Resume
+              </motion.a>
             </div>
             <button
               type="button"
@@ -122,16 +138,16 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="relative w-72 h-72 md:w-96 md:h-96 mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-600 dark:to-purple-600 rounded-3xl transform rotate-6 opacity-50"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 dark:from-purple-600 dark:to-blue-600 rounded-3xl transform -rotate-6 opacity-50"></div>
-              <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative w-64 aspect-[4/5] sm:w-72 md:w-80 max-w-sm mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400/40 to-purple-400/40 dark:from-blue-600/50 dark:to-purple-600/50 rounded-3xl transform rotate-3 scale-[1.02]" />
+              <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl ring-2 ring-white/80 dark:ring-gray-700/80 ring-offset-2 ring-offset-transparent">
                 <Image
-                  src="/deepak-sharma.jpg"
-                  alt="Deepak Sharma - Tech Lead & Full Stack Developer"
+                  src="/image.png"
+                  alt="Deepak Sharma - Engineering Manager & Technical Leadership"
                   fill
-                  className="object-cover"
+                  className="object-cover object-[center_20%]"
                   priority
+                  sizes="(max-width: 768px) 256px, 320px"
                 />
               </div>
             </div>

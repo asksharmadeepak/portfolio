@@ -1,7 +1,14 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
-import { ArrowUpRight, Globe, Layers, Smartphone, Sparkles } from "lucide-react"
+import { ArrowUpRight, Layers, Sparkles } from "lucide-react"
+import {
+  AndroidIcon,
+  GooglePlayIcon,
+  PlatformBadge,
+  WebPlatformIcon,
+} from "./PlatformIcons"
 
 interface Product {
   name: string
@@ -11,6 +18,27 @@ interface Product {
   platform: "web" | "android"
   gradient: string
   glow: string
+  iconUrl?: string
+}
+
+function ProductIcon({ product }: { product: Product }) {
+  const [failed, setFailed] = useState(false)
+
+  if (product.iconUrl && !failed) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={product.iconUrl}
+        alt=""
+        className="w-full h-full object-cover rounded-[inherit]"
+        onError={() => setFailed(true)}
+      />
+    )
+  }
+
+  return (
+    <span className="text-white font-bold text-lg">{product.name.charAt(0)}</span>
+  )
 }
 
 const webApps: Product[] = [
@@ -22,6 +50,7 @@ const webApps: Product[] = [
     platform: "web",
     gradient: "from-violet-600 via-purple-600 to-indigo-700",
     glow: "group-hover:shadow-violet-500/25",
+    iconUrl: "https://www.google.com/s2/favicons?domain=dual-canvas.com&sz=128",
   },
   {
     name: "Lounge Access Finder",
@@ -31,6 +60,7 @@ const webApps: Product[] = [
     platform: "web",
     gradient: "from-blue-600 via-indigo-600 to-slate-700",
     glow: "group-hover:shadow-blue-500/25",
+    iconUrl: "https://www.google.com/s2/favicons?domain=loungeaccessfinder.com&sz=128",
   },
 ]
 
@@ -61,6 +91,7 @@ const mobileApps: Product[] = [
     platform: "android",
     gradient: "from-indigo-500 to-violet-600",
     glow: "group-hover:shadow-indigo-500/20",
+    iconUrl: "https://www.google.com/s2/favicons?domain=loungeaccessfinder.com&sz=128",
   },
   {
     name: "NextBinge",
@@ -105,14 +136,24 @@ function FeaturedWebCard({ product, index }: { product: Product; index: number }
     >
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImEiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNhKSIvPjwvc3ZnPg==')] opacity-60" />
       <div className="relative z-10">
-        <div className="flex items-center justify-between mb-4">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs font-medium">
-            <Globe className="w-3 h-3" />
-            Web App
-          </span>
-          <span className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/30 group-hover:scale-110 transition-all duration-300">
-            <ArrowUpRight className="w-5 h-5" />
-          </span>
+        <div className="flex items-center gap-3 mb-4">
+          <div className="relative shrink-0">
+            <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm overflow-hidden flex items-center justify-center ring-2 ring-white/30">
+              <ProductIcon product={product} />
+            </div>
+            <span
+              className="absolute -bottom-1 -right-1 w-5 h-5 rounded-md bg-white/90 shadow-md flex items-center justify-center text-blue-600"
+              title="Web app"
+            >
+              <WebPlatformIcon size={12} />
+            </span>
+          </div>
+          <div className="flex-1 flex items-center justify-between">
+            <PlatformBadge platform="web" variant="light" />
+            <span className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/30 group-hover:scale-110 transition-all duration-300">
+              <ArrowUpRight className="w-5 h-5" />
+            </span>
+          </div>
         </div>
         <h3 className="text-2xl md:text-3xl font-bold mb-1">{product.name}</h3>
         <p className="text-white/90 font-medium text-sm md:text-base mb-3">{product.tagline}</p>
@@ -141,10 +182,19 @@ function MobileAppCard({ product, index }: { product: Product; index: number }) 
         className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${product.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
       />
       <div className="flex items-start gap-4">
-        <div
-          className={`w-12 h-12 rounded-xl bg-gradient-to-br ${product.gradient} flex items-center justify-center text-white font-bold text-lg shadow-lg shrink-0 group-hover:scale-105 transition-transform duration-300`}
-        >
-          {product.name.charAt(0)}
+        <div className="relative shrink-0">
+          <div
+            className={`w-12 h-12 rounded-xl bg-gradient-to-br ${product.gradient} flex items-center justify-center shadow-lg overflow-hidden group-hover:scale-105 transition-transform duration-300`}
+          >
+            <ProductIcon product={product} />
+          </div>
+          <span
+            className="absolute -bottom-1 -right-1 flex items-center gap-0.5 px-1 py-0.5 rounded-md bg-white dark:bg-gray-900 shadow-md ring-1 ring-gray-200 dark:ring-gray-700"
+            title="Available on Google Play for Android"
+          >
+            <GooglePlayIcon size={11} />
+            <AndroidIcon size={11} className="text-[#3DDC84]" />
+          </span>
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between gap-2">
@@ -154,9 +204,8 @@ function MobileAppCard({ product, index }: { product: Product; index: number }) 
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{product.tagline}</p>
         </div>
       </div>
-      <div className="mt-3 flex items-center gap-1.5">
-        <Smartphone className="w-3 h-3 text-gray-400" />
-        <span className="text-xs text-gray-400 dark:text-gray-500">Google Play</span>
+      <div className="mt-3">
+        <PlatformBadge platform="android" variant="default" />
       </div>
     </motion.a>
   )
@@ -164,10 +213,21 @@ function MobileAppCard({ product, index }: { product: Product; index: number }) 
 
 function ProductsHeader() {
   const stats = [
-    { value: "8", label: "Products live", icon: Layers },
-    { value: "2", label: "Web apps", icon: Globe },
-    { value: "6", label: "On Play Store", icon: Smartphone },
+    { value: "8", label: "Products live", iconType: "layers" as const },
+    { value: "2", label: "Web apps", iconType: "web" as const },
+    { value: "6", label: "Google Play", iconType: "android" as const },
   ]
+
+  function StatIcon({ type }: { type: "layers" | "web" | "android" }) {
+    if (type === "layers") return <Layers className="w-4 h-4 text-white" />
+    if (type === "web") return <WebPlatformIcon size={18} className="text-white" />
+    return (
+      <span className="flex items-center gap-0.5">
+        <GooglePlayIcon size={16} />
+        <AndroidIcon size={14} className="text-[#3DDC84]" />
+      </span>
+    )
+  }
 
   return (
     <motion.div
@@ -210,7 +270,7 @@ function ProductsHeader() {
 
           {/* Stats bar */}
           <div className="inline-flex flex-col sm:flex-row items-stretch gap-px p-1 rounded-2xl bg-gradient-to-r from-blue-200/50 via-purple-200/50 to-blue-200/50 dark:from-blue-900/40 dark:via-purple-900/40 dark:to-blue-900/40 shadow-inner">
-            {stats.map(({ value, label, icon: Icon }, i) => (
+            {stats.map(({ value, label, iconType }, i) => (
               <motion.div
                 key={label}
                 initial={{ opacity: 0, y: 8 }}
@@ -220,7 +280,7 @@ function ProductsHeader() {
                 className="flex items-center gap-3 px-6 py-4 sm:py-3 bg-white/90 dark:bg-gray-900/90 first:rounded-t-xl last:rounded-b-xl sm:first:rounded-l-xl sm:first:rounded-tr-none sm:last:rounded-r-xl sm:last:rounded-bl-none sm:min-w-[140px]"
               >
                 <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shrink-0 shadow-md shadow-purple-500/20">
-                  <Icon className="w-4 h-4 text-white" />
+                  <StatIcon type={iconType} />
                 </div>
                 <div className="text-left">
                   <p className="text-2xl font-bold leading-none text-gray-900 dark:text-white tabular-nums">{value}</p>
@@ -249,10 +309,20 @@ export default function Products() {
         <ProductsHeader />
 
         {/* Featured web apps */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-12">
-          {webApps.map((app, i) => (
-            <FeaturedWebCard key={app.name} product={app} index={i} />
-          ))}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent" />
+            <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-widest flex items-center gap-2">
+              <WebPlatformIcon size={18} className="text-blue-600 dark:text-blue-400" />
+              Live on the Web
+            </h3>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent" />
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            {webApps.map((app, i) => (
+              <FeaturedWebCard key={app.name} product={app} index={i} />
+            ))}
+          </div>
         </div>
 
         {/* Mobile apps grid */}
@@ -260,8 +330,9 @@ export default function Products() {
           <div className="flex items-center gap-3 mb-6">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent" />
             <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-widest flex items-center gap-2">
-              <Smartphone className="w-4 h-4" />
-              Google Play
+              <GooglePlayIcon size={18} />
+              <AndroidIcon size={16} className="text-[#3DDC84]" />
+              Google Play · Android
             </h3>
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent" />
           </div>

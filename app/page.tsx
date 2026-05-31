@@ -1,26 +1,29 @@
 import Hero from "./components/Hero"
 import About from "./components/About"
-import Experience from "./components/Experience"
 import Products from "./components/Products"
+import Experience from "./components/Experience"
 import Skills from "./components/Skills"
-import Services from "./components/Services"
 import Education from "./components/Education"
 import Contact from "./components/Contact"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
 import FloatingNav from "./components/floating-nav"
 
 export default function Home() {
   return (
-    <main className="bg-gray-50 dark:bg-gray-900 min-h-screen">
-      <FloatingNav />
-      <Hero />
-      <About />
-      <Experience />
-      <Products />
-      <Skills />
-      <Services />
-      <Education />
-      <Contact />
-    </main>
+    <>
+      <Header />
+      <main className="bg-gray-50 dark:bg-gray-900 min-h-screen">
+        <FloatingNav />
+        <Hero />
+        <About />
+        <Products />
+        <Experience />
+        <Skills />
+        <Education />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   )
 }
-

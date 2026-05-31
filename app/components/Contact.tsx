@@ -1,8 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Mail, MapPin, Linkedin, MessageCircle } from "lucide-react"
-import Image from "next/image"
+import { Mail, MapPin, Linkedin, MessageCircle, FileDown } from "lucide-react"
 
 export default function Contact() {
 
@@ -52,6 +51,14 @@ export default function Contact() {
                   <MapPin className="w-6 h-6 mr-3 text-blue-600" />
                   Pune, India (Remote/Hybrid)
                 </div>
+                <a
+                  href="/Deepak_Sharma_Resume.pdf"
+                  download
+                  className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                >
+                  <FileDown className="w-6 h-6 mr-3 text-blue-600" />
+                  Download Resume (PDF)
+                </a>
               </div>
             </div>
           </motion.div>
@@ -107,9 +114,6 @@ export default function Contact() {
             </div>
           </motion.div>
         </div>
-      </div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 -mb-32 -mr-32 opacity-20">
-        <Image src="/placeholder.svg?height=256&width=256" alt="Decorative background" width={256} height={256} />
       </div>
     </section>
   )

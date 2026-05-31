@@ -7,9 +7,9 @@ import { ModeToggle } from "@/components/mode-toggle"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Deepak Sharma - Tech Lead & Full Stack Developer",
+  title: "Deepak Sharma - Engineering Manager | Technical Leadership",
   description:
-    "Portfolio of Deepak Sharma, a seasoned Tech Lead with 13+ years of experience in Java, Scala, and Kotlin technologies.",
+    "Portfolio of Deepak Sharma — Engineering Manager with 14+ years leading teams and shipping production products on Google Play and the web.",
     generator: 'v0.dev'
 }
 
@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="fixed top-4 right-4 z-50">
+          <div className="fixed top-[4.25rem] right-4 z-50 md:top-4">
             <ModeToggle />
           </div>
           {children}
@@ -31,7 +31,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'
