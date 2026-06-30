@@ -19,6 +19,11 @@ interface Product {
   gradient: string
   glow: string
   iconUrl?: string
+  packageId?: string
+  category?: string
+  developer?: string
+  featured?: boolean
+  highlights?: string[]
 }
 
 function ProductIcon({ product }: { product: Product }) {
@@ -29,16 +34,14 @@ function ProductIcon({ product }: { product: Product }) {
       // eslint-disable-next-line @next/next/no-img-element
       <img
         src={product.iconUrl}
-        alt=""
+        alt={`${product.name} app icon`}
         className="w-full h-full object-cover rounded-[inherit]"
         onError={() => setFailed(true)}
       />
     )
   }
 
-  return (
-    <span className="text-white font-bold text-lg">{product.name.charAt(0)}</span>
-  )
+  return <span className="text-white font-bold text-lg">{product.name.charAt(0)}</span>
 }
 
 const webApps: Product[] = [
@@ -112,13 +115,26 @@ const mobileApps: Product[] = [
     glow: "group-hover:shadow-cyan-500/20",
   },
   {
-    name: "myBinge",
-    tagline: "Your watchlist hub",
-    description: "Track and plan what you watch.",
+    name: "MyBinge",
+    tagline: "Personal video library for phone & TV",
+    description:
+      "Organize and watch your personal video library on Android phones and Android TV — profile-based viewing, continue watching, and a TV-friendly interface for remote navigation.",
     href: "https://play.google.com/store/apps/details?id=com.mybinge.app",
     platform: "android",
-    gradient: "from-rose-500 to-orange-600",
-    glow: "group-hover:shadow-rose-500/20",
+    packageId: "com.mybinge.app",
+    category: "Productivity",
+    developer: "D labs",
+    featured: true,
+    gradient: "from-rose-500 via-red-500 to-orange-600",
+    glow: "group-hover:shadow-rose-500/25",
+    iconUrl:
+      "https://play-lh.googleusercontent.com/gDig7JrEXFK1466ivPL_N-dIqyuaF7NpW-a8GgB77zij4uqdNjiIqiNqCWGXHFvdtyzormzTLGzCBrqXNAnQTg=w240-h480",
+    highlights: [
+      "Browse & play from device storage and external drives",
+      "Profile-based viewing for shared devices",
+      "Continue watching with resume playback",
+      "Android TV support with remote-friendly navigation",
+    ],
   },
 ]
 
@@ -161,6 +177,75 @@ function FeaturedWebCard({ product, index }: { product: Product; index: number }
       </div>
       <p className="relative z-10 mt-4 text-xs text-white/60 group-hover:text-white/90 transition-colors">
         Idea · Design · Development by me
+      </p>
+    </motion.a>
+  )
+}
+
+function FeaturedAndroidCard({ product, index }: { product: Product; index: number }) {
+  return (
+    <motion.a
+      href={product.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className={`group relative overflow-hidden rounded-2xl p-6 md:p-8 bg-white dark:bg-gray-800/90 border border-gray-200/80 dark:border-gray-700/80 shadow-xl ${product.glow} hover:shadow-2xl hover:-translate-y-1 transition-all duration-300`}
+    >
+      <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${product.gradient}`} />
+      <div className="flex flex-col md:flex-row gap-6">
+        <div className="relative shrink-0 mx-auto md:mx-0">
+          <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg ring-2 ring-gray-100 dark:ring-gray-700">
+            <ProductIcon product={product} />
+          </div>
+          <span
+            className="absolute -bottom-1 -right-1 flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-white dark:bg-gray-900 shadow-md ring-1 ring-gray-200 dark:ring-gray-700"
+            title="Google Play · Android"
+          >
+            <GooglePlayIcon size={12} />
+            <AndroidIcon size={12} className="text-[#3DDC84]" />
+          </span>
+        </div>
+        <div className="flex-1 min-w-0 text-center md:text-left">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
+            <PlatformBadge platform="android" variant="default" />
+            {product.category && (
+              <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                {product.category}
+              </span>
+            )}
+            {product.developer && (
+              <span className="text-xs text-gray-500 dark:text-gray-400">by {product.developer}</span>
+            )}
+          </div>
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-1">{product.name}</h3>
+          <p className="text-gray-700 dark:text-gray-300 font-medium text-sm md:text-base mb-2">{product.tagline}</p>
+          <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">{product.description}</p>
+          {product.highlights && product.highlights.length > 0 && (
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-left text-sm text-gray-600 dark:text-gray-400">
+              {product.highlights.map((item) => (
+                <li key={item} className="flex items-start gap-1.5">
+                  <span className="text-rose-500 mt-0.5">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+          {product.packageId && (
+            <p className="mt-4 text-xs text-gray-400 dark:text-gray-500 font-mono">{product.packageId}</p>
+          )}
+        </div>
+        <div className="hidden md:flex items-start">
+          <span className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center group-hover:bg-rose-100 dark:group-hover:bg-rose-900/30 group-hover:scale-110 transition-all">
+            <ArrowUpRight className="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-rose-600" />
+          </span>
+        </div>
+      </div>
+      <p className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400">
+        Idea · Design · Development by me ·{" "}
+        <span className="text-rose-600 dark:text-rose-400 font-medium">View on Google Play</span>
       </p>
     </motion.a>
   )
@@ -325,6 +410,26 @@ export default function Products() {
           </div>
         </div>
 
+        {/* Featured Android app */}
+        {mobileApps.some((app) => app.featured) && (
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent" />
+              <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                <GooglePlayIcon size={18} />
+                <AndroidIcon size={16} className="text-[#3DDC84]" />
+                Featured on Google Play
+              </h3>
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent" />
+            </div>
+            {mobileApps
+              .filter((app) => app.featured)
+              .map((app, i) => (
+                <FeaturedAndroidCard key={app.name} product={app} index={i} />
+              ))}
+          </div>
+        )}
+
         {/* Mobile apps grid */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-6">
@@ -332,14 +437,16 @@ export default function Products() {
             <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-widest flex items-center gap-2">
               <GooglePlayIcon size={18} />
               <AndroidIcon size={16} className="text-[#3DDC84]" />
-              Google Play · Android
+              More on Google Play
             </h3>
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {mobileApps.map((app, i) => (
-              <MobileAppCard key={app.name} product={app} index={i} />
-            ))}
+            {mobileApps
+              .filter((app) => !app.featured)
+              .map((app, i) => (
+                <MobileAppCard key={app.name} product={app} index={i} />
+              ))}
           </div>
         </div>
 
