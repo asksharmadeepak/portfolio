@@ -67,6 +67,8 @@ const webApps: Product[] = [
   },
 ]
 
+const PLAY_DEVELOPER_PROFILE = "https://play.google.com/store/apps/dev?id=8759041902208147900"
+
 const mobileApps: Product[] = [
   {
     name: "ChargerLive",
@@ -346,12 +348,21 @@ function ProductsHeader() {
             </span>
           </h2>
 
-          <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+          <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-3">
             From idea to launch — production-grade apps on Google Play and the web.
             <span className="block mt-1 text-gray-500 dark:text-gray-500 text-sm md:text-base">
               Designed, developed, and shipped end-to-end by me.
             </span>
           </p>
+          <a
+            href={PLAY_DEVELOPER_PROFILE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-700 dark:text-blue-300 hover:underline mb-8"
+          >
+            View full Google Play developer profile (D labs)
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
 
           {/* Stats bar */}
           <div className="inline-flex flex-col sm:flex-row items-stretch gap-px p-1 rounded-2xl bg-gradient-to-r from-blue-200/50 via-purple-200/50 to-blue-200/50 dark:from-blue-900/40 dark:via-purple-900/40 dark:to-blue-900/40 shadow-inner">
@@ -441,12 +452,23 @@ export default function Products() {
             </h3>
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
             {mobileApps
               .filter((app) => !app.featured)
               .map((app, i) => (
                 <MobileAppCard key={app.name} product={app} index={i} />
               ))}
+          </div>
+          <div className="text-center">
+            <a
+              href={PLAY_DEVELOPER_PROFILE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            >
+              See all apps by D labs on Google Play
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
 
